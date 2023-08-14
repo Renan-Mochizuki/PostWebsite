@@ -53,11 +53,25 @@
 .containergrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    row-gap: 40px;
+    column-gap: 20px;
     padding: 20px;
     justify-content: center;
     align-items: start;
     grid-auto-rows: max-content;
+}
+
+.post {
+    border-radius: 10px;
+    padding: 10px;
+    height: 100%;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
 }
 
 .headerpost{
@@ -70,19 +84,6 @@
 .headerpost p{
     color: whitesmoke;
     text-shadow: 0px 0px 5px black;
-}
-
-.post {
-    border-radius: 10px;
-    padding: 10px;
-    height: 85%;
-    margin-bottom: 15px;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
 }
 
 .botoes {
@@ -137,9 +138,16 @@ h3{
     margin-top: 5px
 }
 
+.divpost{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .conteudopost{
     color: rgb(68, 68, 68);
     font-size: 14px;
+    position: absolute;
 }
 
 form{
