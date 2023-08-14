@@ -1,0 +1,25 @@
+<div id="header">
+    <h1 id="titulo">Lista de Posts: </h1>
+    <a href="/cad" id="botaomais">+</a>
+</div>
+
+<div class="containergrid">
+    {{#each posts}}
+    <div class="post">
+        <div class="headerpost">
+            <p>Código: {{id}}</p>
+            <p>{{createdAt}}</p>
+        </div>
+        <div class="titulopost">
+            <p>Título:</p>
+            <h2>{{titulo}}</h2>
+        </div>
+        <p class="conteudopost">Conteúdo: </p>
+        <h3>{{conteudo}}</h3>
+        <div class="botoes">
+            <a href="/deletar/{{id}}" class="botao"><button>Deletar</button></a>
+            <a href="/alterar/{{id}}" class="botao"><button>Alterar</button></a>
+        </div>
+    </div>
+    {{/each}}
+</div>

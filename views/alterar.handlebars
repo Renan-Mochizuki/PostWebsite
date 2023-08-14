@@ -1,0 +1,20 @@
+<div id="header">
+    <h1 id="titulo">Alterar a postagem</h1>
+</div>
+
+<form action="/update" method="post">
+    {{#each posts}}
+    <div class="headerpost">
+        <p>ID: {{id}}</p>
+    </div>
+    <input type="text" name="id" value="{{id}}" readonly="true" class="campo" style="display: none;">
+
+    <p class="formp">Título:</p>
+    <input type="text" name="titulo" value="{{titulo}}" class="campo">
+
+    <p class="formp">Conteúdo:</p>
+    <textarea type="text" name="conteudo" class="campo">{{conteudo}}</textarea>
+
+    <input type="submit" value="Alterar" class="botaocadastrar">
+    {{/each}}
+</form>
