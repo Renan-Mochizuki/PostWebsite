@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const mysql2 = require('mysql2');
+require('dotenv').config()
 
-const sequelize = new Sequelize('postapp', 'PCwuSye894AJuf8.root', '1MOs6YaQm3kRWoyA', {
+const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
     dialect: "mysql",
     host: 'gateway01.us-west-2.prod.aws.tidbcloud.com',
     port: 4000,
