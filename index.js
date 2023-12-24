@@ -4,6 +4,7 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const Post = require('./models/Post');
+const { format } = require('date-fns');
 require('dotenv').config();
 
 app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
@@ -19,7 +20,13 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     Post.findAll().then(posts => {
-        const postsData = posts.map(post => post.toJSON());
+        const postsData = posts.map(post => {
+            const itemJson = post.toJSON();
+            const dataFormatada = format(new Date(post.createdAt), "dd/MM/yy HH:mm");
+            const itemFormatado = { ...itemJson }
+            itemFormatado.createdAt = dataFormatada;
+            return itemFormatado;
+        });
         res.render('home', { posts: postsData });
     });
 });
@@ -29,14 +36,17 @@ app.get('/cad', (req, res) => {
 });
 
 app.post('/add', (req, res) => {
-    Post.create({
-        titulo: req.body.titulo,
-        conteudo: req.body.conteudo
-    }).then(() => {
-        res.redirect('/');
-    }).catch(erro => {
-        res.send("Houve um erro: " + erro);
-    })
+    const { titulo, conteudo } = req.body;
+    if (titulo) {
+        Post.create({
+            titulo,
+            conteudo
+        }).then(() => {
+            res.redirect('/');
+        }).catch(erro => {
+            res.send("Houve um erro: " + erro);
+        })
+    }
 });
 
 app.get('/deletar/:id', (req, res) => {

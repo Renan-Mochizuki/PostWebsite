@@ -118,18 +118,21 @@ h2{
     text-align: center;
 }
 
-h3{ 
-    margin-top: -2px;
+.divpost h3{ 
+    margin-top: -5px;
     margin-bottom: 10px;
     word-wrap: break-word;
     white-space: pre-wrap;
+}
+
+.divpost h3:before{
+    content: '\3000\3000\3000\2002\0020';
 }
 
 .titulopost{
     display: flex;
     flex-direction: row;
     margin-top: 5px;
-    margin-bottom: 10px;
 }
 
 .titulopost p{
@@ -145,11 +148,12 @@ h3{
     gap: 10px;
 }
 
-.conteudopost{
+.tituloconteudo{
     color: rgb(68, 68, 68);
     font-size: 14px;
     position: absolute;
 }
+
 
 form{
     width: 40%;
@@ -188,6 +192,11 @@ form{
     margin-bottom: 10%; 
     resize: vertical;
     overflow-x: hidden;
+    font-size: 20px;
+}
+
+.campo[name="titulo"]{
+    text-align: center;
 }
 
 .formp{
